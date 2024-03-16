@@ -1,14 +1,17 @@
 #include <iostream>
 #include <vector>
+#include <bitset>
 
 using namespace std;
 
 vector<int> getPos(int sensors[]) {
   unsigned int zone = 0;
 
-  for (int i = 0; i < 16; i++) {
-    if (sensors[i] != 0) {
-      zone += 1 << i;
+  for (int i = 0; i < 15; i++) {
+    if (i == 0 && sensors[i] != 0) {
+      zone += 1;
+    } else if (sensors[i] != 0) {
+      zone += (1 << i);
     }
   }
   
@@ -180,7 +183,46 @@ vector<int> getPos(int sensors[]) {
 
 int main() {
   vector<int> pos;
-  pos = getPos(new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1});
 
-  cout << "x: " << pos[0] << " y: " << pos[1] << endl;
+  pos = getPos(new int[] {1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0});
+  cout << "sensors: 1, 2" << ", coordinates: (" << pos[0] << ", " << pos[1] << ")";
+  cout << endl;
+  fill(pos.begin(), pos.end(), 0);
+
+  pos = getPos(new int[] {0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0});
+  cout << "sensors: 3, 4" << ", coordinates: (" << pos[0] << ", " << pos[1] << ")";
+  cout << endl;
+  fill(pos.begin(), pos.end(), 0);
+
+  pos = getPos(new int[] {0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0});
+  cout << "sensors: 4, 7" << ", coordinates: (" << pos[0] << ", " << pos[1] << ")";
+  cout << endl;
+  fill(pos.begin(), pos.end(), 0);
+
+  pos = getPos(new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1});
+  cout << "sensors: 11, 15" << ", coordinates: (" << pos[0] << ", " << pos[1] << ")";
+  cout << endl;
+  fill(pos.begin(), pos.end(), 0);
+
+  pos = getPos(new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0});
+  cout << "sensors: 12, 13" << ", coordinates: (" << pos[0] << ", " << pos[1] << ")";
+  cout << endl;
+  fill(pos.begin(), pos.end(), 0);
+
+  pos = getPos(new int[] {0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0});
+  cout << "sensors: 8, 12" << ", coordinates: (" << pos[0] << ", " << pos[1] << ")";
+  cout << endl;
+  fill(pos.begin(), pos.end(), 0);
+
+  pos = getPos(new int[] {1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0});
+  cout << "sensors: 1, 5" << ", coordinates: (" << pos[0] << ", " << pos[1] << ")";
+  cout << endl;
+  fill(pos.begin(), pos.end(), 0);
+
+  pos = getPos(new int[] {0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0});
+  cout << "sensors: 2, 6" << ", coordinates: (" << pos[0] << ", " << pos[1] << ")";
+  cout << endl;
+  fill(pos.begin(), pos.end(), 0);
+
 }
+
