@@ -1,10 +1,9 @@
 #include <iostream>
 #include <vector>
-#include <bitset>
 
 using namespace std;
 
-vector<int> getPos(int sensors[]) {
+vector<int> getPos15Sensors(int sensors[]) {
   unsigned int zone = 0;
 
   for (int i = 0; i < 15; i++) {
@@ -176,7 +175,206 @@ vector<int> getPos(int sensors[]) {
       pos[0] = 28;
       pos[1] = 28;
       break;
+    case 0b0000000000000001:
+      pos[0] = 6;
+      pos[1] = 6;
+      break;
+    case 0b0000000000000010:
+      pos[0] = 6;
+      pos[1] = 9;
+      break;
+    case 0b0000000000000100:
+      pos[0] = 6;
+      pos[0] = 21;
+      break;
+    case 0b0000000000001000:
+      pos[0] = 6;
+      pos[1] = 24;
+      break;
+    case 0b0000000000010000:
+      pos[0] = 9;
+      pos[1] = 6;
+      break;
+    case 0b0000000000100000:
+      pos[0] = 8;
+      pos[1] = 15;
+      break;
+    case 0b0000000001000000:
+      pos[0] = 9;
+      pos[1] = 24;
+      break;
+    case 0b0000000010000000:
+      pos[0] = 21;
+      pos[0] = 6;
+      break;
+    case 0b0000000100000000:
+      pos[0] = 18;
+      pos[1] = 9;
+      break;
+    case 0b0000001000000000:
+      pos[0] = 18;
+      pos[1] =  21;
+      break;
+    case 0b0000010000000000:
+      pos[0] = 21;
+      pos[0] = 24;
+      break;
+    case 0b0000100000000000:
+      pos[0] = 24;
+      pos[1] = 6;
+      break;
+    case 0b0001000000000000:
+      pos[0] = 24;
+      pos[0] = 9;
+      break;
+    case 0b0010000000000000:
+      pos[0] = 24;
+      pos[0] = 21;
+      break;
+    case 0b0100000000000000:
+      pos[0] = 24;
+      pos[0] = 24;
+      break;
+    default:
+      pos[0] = -1;
+      pos[1] = -1;
+      break;
   };
+
+  return pos;
+}
+
+vector<int> getPos12Sensors(int sensors[]) {
+  unsigned int zone = 0;
+  vector<int> pos;
+
+  for (int i = 0; i < 12; i++) {
+    if (sensors[i] != 0) {
+      zone += (i << i);
+    }
+  }
+
+  switch(zone) {
+    case 0b0000000000000000:
+      pos[0] = 15;
+      pos[1] = 15;
+      break;
+    case 0b0000001000000000:
+      pos[0] = 2;
+      pos[1] = 28;
+      break;
+    case 0b0000011100000000:
+      pos[0] = 4;
+      pos[1] = 26;
+      break;
+    case 0b0000001100000000:
+      pos[0] = 11;
+      pos[1] = 26;
+      break;
+    case 0b0000011000000000:
+      pos[0] = 4;
+      pos[1] = 19;
+      break;
+    case 0b0000010100000000:
+      pos[0] = 11;
+      pos[1] = 19;
+      break;
+    case 0b0000000100000000:
+      pos[0] = 15;
+      pos[1] = 22;
+      break;
+    case 0b0000000010000000:
+      pos[0] = 15;
+      pos[1] = 22;
+      break;
+    case 0b0000000011000000:
+      pos[0] = 19;
+      pos[1] = 26;
+      break;
+    case 0b0000000011100000:
+      pos[0] = 26;
+      pos[1] = 26;
+      break;
+    case 0b0000000010100000:
+      pos[0] = 19;
+      pos[1] = 19;
+      break;
+    case 0b0000000001000000:
+      pos[0] = 28;
+      pos[1] = 28;
+      break;
+    case 0b0000000001100000:
+      pos[0] = 26;
+      pos[1] = 19;
+      break;
+    case 0b0000100000000000:
+      pos[0] = 8;
+      pos[1] = 15;
+      break;
+    case 0b0000010000000000:
+      pos[0] = 8;
+      pos[1] = 15;
+      break;
+    case 0b0000000000100000:
+      pos[0] = 22;
+      pos[1] = 15;
+      break;
+    case 0b0000000000010000:
+      pos[0] = 22;
+      pos[1] = 15;
+      break;
+    case 0b0000100000000001:
+      pos[0] = 4;
+      pos[1] = 11;
+      break;
+    case 0b0000100000000011:
+      pos[0] = 4;
+      pos[1] = 4;
+      break;
+    case 0b0000000000000001:
+      pos[0] = 2;
+      pos[1] = 2;
+      break;
+    case 0b0000100000000010:
+      pos[0] = 11;
+      pos[1] = 11;
+      break;
+    case 0b0000000000000011:
+      pos[0] = 11;
+      pos[1] = 4;
+      break;
+    case 0b0000000000000100:
+      pos[0] = 15;
+      pos[1] = 8;
+    case 0b0000000000000010:
+      pos[0] = 15;
+      pos[1] = 8;
+      break;
+    case 0b0000000000010100:
+      pos[0] = 19;
+      pos[1] = 11;
+      break;
+    case 0b0000000000001100:
+      pos[0] = 19;
+      pos[1] = 4;
+      break;
+    case 0b0000000000011000:
+      pos[0] = 26;
+      pos[1] = 11;
+      break;
+    case 0b0000000000011100:
+      pos[0] = 26;
+      pos[1] = 4;
+      break;
+    case 0b0000000000001000:
+      pos[0] = 28;
+      pos[1] = 2;
+      break;
+    default:
+      pos[0] = -1;
+      pos[1] = -1;
+      break;
+  }
 
   return pos;
 }
@@ -184,45 +382,44 @@ vector<int> getPos(int sensors[]) {
 int main() {
   vector<int> pos;
 
-  pos = getPos(new int[] {1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0});
+  pos = getPos15Sensors(new int[] {1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0});
   cout << "sensors: 1, 2" << ", coordinates: (" << pos[0] << ", " << pos[1] << ")";
   cout << endl;
   fill(pos.begin(), pos.end(), 0);
 
-  pos = getPos(new int[] {0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0});
+  pos = getPos15Sensors(new int[] {0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0});
   cout << "sensors: 3, 4" << ", coordinates: (" << pos[0] << ", " << pos[1] << ")";
   cout << endl;
   fill(pos.begin(), pos.end(), 0);
 
-  pos = getPos(new int[] {0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0});
+  pos = getPos15Sensors(new int[] {0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0});
   cout << "sensors: 4, 7" << ", coordinates: (" << pos[0] << ", " << pos[1] << ")";
   cout << endl;
   fill(pos.begin(), pos.end(), 0);
 
-  pos = getPos(new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1});
+  pos = getPos15Sensors(new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1});
   cout << "sensors: 11, 15" << ", coordinates: (" << pos[0] << ", " << pos[1] << ")";
   cout << endl;
   fill(pos.begin(), pos.end(), 0);
 
-  pos = getPos(new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0});
+  pos = getPos15Sensors(new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0});
   cout << "sensors: 12, 13" << ", coordinates: (" << pos[0] << ", " << pos[1] << ")";
   cout << endl;
   fill(pos.begin(), pos.end(), 0);
 
-  pos = getPos(new int[] {0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0});
+  pos = getPos15Sensors(new int[] {0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0});
   cout << "sensors: 8, 12" << ", coordinates: (" << pos[0] << ", " << pos[1] << ")";
   cout << endl;
   fill(pos.begin(), pos.end(), 0);
 
-  pos = getPos(new int[] {1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0});
+  pos = getPos15Sensors(new int[] {1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0});
   cout << "sensors: 1, 5" << ", coordinates: (" << pos[0] << ", " << pos[1] << ")";
   cout << endl;
   fill(pos.begin(), pos.end(), 0);
 
-  pos = getPos(new int[] {0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0});
+  pos = getPos15Sensors(new int[] {0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0});
   cout << "sensors: 2, 6" << ", coordinates: (" << pos[0] << ", " << pos[1] << ")";
   cout << endl;
   fill(pos.begin(), pos.end(), 0);
 
 }
-
