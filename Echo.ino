@@ -1,7 +1,15 @@
+/*
+  NASA_MINDS PROJECT
+  PROGRAM FOR ECHO SYSTEM
+  VERSION 1.0.0
+  3/16/24
+*/
 #include "switches.h"
 #include "times.h"
 #include "store.h"
 #include "find.h"
+#include "alg.cpp"
+
 
 unsigned char ReadMulti[10] = {0XAA,0X00,0X27,0X00,0X03,0X22,0XFF,0XFF,0X4A,0XDD};
 unsigned int timeSec = 0;
@@ -116,4 +124,6 @@ void loop() {
       add=0;
     }
   }
+  Serial.println(getPos15Sensors(Location));
 }
+
